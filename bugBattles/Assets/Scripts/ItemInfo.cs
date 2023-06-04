@@ -6,9 +6,10 @@ public class ItemInfo : MonoBehaviour
 {
     //this will hold all of the diffrent Items and their effects
 
-    public void ItemEffect(CardInfo card, int itemID)
+    public int ItemEffect(CardInfo card, int itemID, int attackAmount)
     {
         //idk like a switch for 30 diffrent effect
         //it starts on 1 because 0 is no item
+        return attackAmount;
     }
 }
