@@ -227,6 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8340894883629743464}
+  - component: {fileID: 126007197009389313}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -252,6 +253,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126007197009389313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376290337549056192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247d0a9653f57144bbe805d3f33043d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  frontCard: {fileID: 5653850397887187981}
+  backCards: {fileID: 6231072959075462449}
+  Deck: {fileID: 8800192854386751217}
+  manager: {fileID: 0}
+  allCards: []
+  noCardOnFront: 0
+  lostGame: 0
 --- !u!1 &5653850397887187981
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3894653521309600234}
   m_Layer: 0
-  m_Name: ActiveCard
+  m_Name: FrontCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7302556071091379223}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

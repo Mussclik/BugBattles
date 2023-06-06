@@ -18,4 +18,9 @@ public class Deck : MonoBehaviour
       //  }
     }
 
+    public void DrawCard()
+    {
+        
+    }
+
 }

@@ -9,15 +9,14 @@ public class RoundManager : MonoBehaviour
 {
     public KeyCode nextturn;
 
+
     public TextMeshProUGUI currentTurnText;
     public TextMeshProUGUI currentRoundText;
     public TextMeshProUGUI warningText;
+    public TextMeshProUGUI playerlostText;
 
-    public CardInfo activeCardP1;
-    public CardInfo activeCardP2;
-
-    public GameObject p1FrontCardSlot;
-    public GameObject p2FrontCardSlot;
+    public PlayerScript player1;
+    public PlayerScript player2;
 
     public int currentPlayer;
     public int currentRound;
@@ -27,58 +26,55 @@ public class RoundManager : MonoBehaviour
 
     public int startingScience;
     public int sciencePerRound;
-    int player1Science;
-    int player2Science;
 
     public float frontWarningTime;
+    bool startedturn;
+    bool newturn;
 
 
     void Start()
     {
-        player1Science = startingScience;
-        player2Science = startingScience;
+        player1.currentScience = startingScience;
+        player1.currentScience = startingScience;
         warningText.gameObject.SetActive(false);
+        startedturn = true;
     }
 
     void Update()
-    {   
+    {
         if (roundcheck >= 2)
         {
             roundcheck = 0;
             currentRound++;
             currentRoundText.text = "Current Round: " + currentRound.ToString();
         }
-        currentTurnText.text = "Current Turn: P" + currentPlayer.ToString();   
-    }
-
-
-    public void DamageCard(int attackAmount, CardInfo card)
-    {
-        CardInfo cardinfo = card;
-
-        //fix later
-        attackAmount = gameObject.GetComponent<ItemInfo>().ItemEffect(card, card.itemID, attackAmount);
-        attackAmount = gameObject.GetComponent<MutationInfo>().MutationEffect(card, card.mutationID, attackAmount);
-
-        card.health -= attackAmount;
-
+        currentTurnText.text = "Current Turn: P" + currentPlayer.ToString();
     }
 
     public void InvokeNextTurn() // used for button to activate next turn wat no way
     {
-        if (currentPlayer == 1)
-        {
-            if (p1FrontCardSlot.transform.childCount > 0)
-            {
-                activeCardP1 = p1FrontCardSlot.transform.GetChild(0).gameObject.GetComponent<CardInfo>();
 
-                
+        newturn = false;
+        if (currentPlayer == 1) //player 1
+        {
+            if (startedturn == true)
+            {
+                startedturn = false;
+                player1.BeginTurnActions();
+            }
+            if (!player1.noCardOnFront)
+            {
+                CardInfo frontCard = player1.frontCard.GetComponent<CardInfo>();
+                CardInfo enemyFrontCard = player2.frontCard.GetComponent<CardInfo>();
                 //activate special effects for this players card
-                DamageCard(activeCardP1.attack, activeCardP2);
+                player2.TakeDamage(player1.GiveDamageAmount()); /* add += extra mutation/item attack */
                 currentPlayer = 2;
                 //set PulledCard false
                 //add card to player2 deck
                 //function that adds card to deck, checks if there are 4 creature cards, if not then allow creature card pulls
+                startedturn = true;
+
+                roundcheck++;
 
             }
             else
@@ -86,35 +82,58 @@ public class RoundManager : MonoBehaviour
                 StartCoroutine(PlaceEnemyOntoFront());
             }
         }
-        else 
+
+        else //player2
         {
-            if (p2FrontCardSlot.transform.GetChild(0).gameObject.GetComponent<CardInfo>() != null)
+            if (startedturn == true)
             {
-                activeCardP2 = p2FrontCardSlot.transform.GetChild(0).gameObject.GetComponent<CardInfo>();
-
-
+                startedturn = false;
+                player2.BeginTurnActions();
+            }
+            if (!player2.noCardOnFront)
+            {
                 //activate special effects for this players card
-                DamageCard(activeCardP2.attack, activeCardP1);
+                player1.TakeDamage(player2.GiveDamageAmount()); /* add += extra mutation/item attack */
                 currentPlayer = 1;
                 //set PulledCard false
                 //add card to player2 deck
                 //function that adds card to deck, checks if there are 4 creature cards, if not then allow creature card pulls
+                startedturn = true;
+
+                roundcheck++;
             }
             else
             {
-                //check if creatures exist in the back of player, tell player to add battlefuild card if they try to advance turn
-                //if no creature in the back
                 StartCoroutine(PlaceEnemyOntoFront());
             }
         }
 
-        roundcheck++;
+        player1.BeginTurnActions();
+        player2.BeginTurnActions();
     }
 
     internal IEnumerator PlaceEnemyOntoFront()
     {
-        warningText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(frontWarningTime);
+        if (warningText.gameObject != null)
+        {
+            warningText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(frontWarningTime);
+
+            if (warningText.gameObject != null)
+            {
+                warningText.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void EndGame(int playerID)
+    {
         warningText.gameObject.SetActive(false);
+        playerlostText.gameObject.SetActive(true);
+        playerlostText.text = "P" + playerID.ToString() + " Lost, suck shit loser";
+
+        //display text saying who won
+        //disable interaction with the game
+        //send back to menu
     }
 }
