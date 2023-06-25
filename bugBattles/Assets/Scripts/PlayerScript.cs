@@ -70,6 +70,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (card.GetComponent<CardInfo>().playerID == playerID)
         {
+            Debug.Log("addcardtofront");
             card.gameObject.transform.parent = frontCard.transform;
             card.transform.localPosition = Vector3.zero;
             //can start next turn = true

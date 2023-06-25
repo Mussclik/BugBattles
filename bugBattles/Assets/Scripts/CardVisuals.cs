@@ -28,7 +28,6 @@ public class CardVisuals : MonoBehaviour
     GameObject manager;
 
 
-    string uhoh = "something went fuckywucky";
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class CardVisuals : MonoBehaviour
 
     void Update()
     {
-        if (creaturecard)
+        if (creaturecard && card != null)
         {
             typeText.text = "la creatura";
 
@@ -51,11 +50,6 @@ public class CardVisuals : MonoBehaviour
 
             nameText.text = cardIndex.creaureNames[card.cardID];
             description.text = cardIndex.creatureDescriptions[card.cardID];
-
-
         }
-
-
-
     }
 }

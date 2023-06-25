@@ -49,13 +49,33 @@ public class CardInfo : MonoBehaviour
     private void OnMouseOver()
     {
         Debug.Log("mose over card");
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) //leftclick
         {
             Debug.Log("mose clicked card");
+
+            if (cardID != 0)  //bugcard, main thing, on confirm it should move card from back to front
+            {
+
+            }
+            else if (mutationID != 0) //mutationcard, apply to creature card and delete this one
+            {
+
+            }
+            else //itemcard, same as mutation card
+            {
+
+            }
+            /*
             if (currentOwner.noCardOnFront && manager.GetComponent<RoundManager>().currentPlayer == playerID)
             {
                 currentOwner.AddCardToFront(gameObject);
             }
+            */
+        }
+
+        if (Input.GetMouseButtonDown(1)) //rightclick, open inspect
+        {
+           
         }
 
     }
