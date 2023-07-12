@@ -24,7 +24,7 @@ public class CardBackVisualScript : MonoBehaviour
     {
         
         cards = GetComponentsInChildren<CardInfo>();
-        if (numberOfChildren != cards.Length);
+        if (numberOfChildren != cards.Length)
         {
             ReSort(gameObject);
             numberOfChildren = cards.Length;

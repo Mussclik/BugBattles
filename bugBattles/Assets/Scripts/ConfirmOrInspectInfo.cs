@@ -12,9 +12,40 @@ public class ConfirmOrInspectInfo : MonoBehaviour
     public GameObject canvasButtons;
     public GameObject confirmFrontButton;
     public GameObject confirmAddToCardButton;
+
+    public GameObject mutationItemTemplate;
     GameObject[] cardslots;
+    public delegate void ConfirmPressed();
+    public static event ConfirmPressed confirmPressed;
 
 
+    public void OpenInspectConfirmMenu(GameObject cardObject, bool frontButtonOn = false) //called by a card on click to inspect card or to place creature onto front, enable the inspect menu things, store the card object,
+    {
+        if (frontButtonOn)
+        {
+            confirmFrontButton.SetActive(true);
+        }
+        GameObject tempCCardVisualsGB;
+
+        tempCCardVisualsGB = Instantiate(cardObject.GetComponent<CardInfo>().visuals, creatureSlot.transform.position, Quaternion.identity, creatureSlot.transform);
+        tempCCardVisualsGB.GetComponent<CardVisuals>().enabled = false;
+    }
+
+    public void ResetInspectMenu()
+    {
+
+    }
+
+    public void ConfirmButton()
+    {
+        confirmPressed();
+    }
+
+
+
+
+
+    /*
     public void Start()
     {
         cardslots = new GameObject[3];
@@ -47,4 +78,5 @@ public class ConfirmOrInspectInfo : MonoBehaviour
     {
 
     }
+    */
 }

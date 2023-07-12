@@ -137,18 +137,7 @@ public class RoundManager : MonoBehaviour
         //send back to menu
     }
 
-    public void ConfirmationCreature(GameObject cardVisualGameObject) //copy card visuals and add cancel button, and confirm button, confirm place to front
-    {
-
-    }
-
-    public void OpenInspector(GameObject cardGameObject)
-    {
-        //clear out previous
 
 
 
-
-
-    }
 }
