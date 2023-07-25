@@ -2,18 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//vars 
-
-public static int playerturn;
-
-
 public class RoundManager : MonoBehaviour
 {
-    
-
-
-
     // Start is called before the first frame update
     void Start()
     {
