@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7713148559834193274}
-  - component: {fileID: 6512936561059894715}
+  - component: {fileID: 7532495982444714275}
+  - component: {fileID: 4813524647902121444}
   m_Layer: 0
   m_Name: visuals
   m_TagString: Untagged
@@ -30,18 +31,18 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3393327149512224372}
+  - {fileID: 8634092389232076288}
   - {fileID: 8634092389787927392}
   - {fileID: 8634092389057875670}
   - {fileID: 8634092388846713274}
-  - {fileID: 8634092389232076288}
   - {fileID: 8634092389317040412}
+  - {fileID: 9183893977218182998}
   - {fileID: 8634092388259128089}
   - {fileID: 8634092388279719317}
-  - {fileID: 9183893977218182998}
   m_Father: {fileID: 8634092387974886960}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6512936561059894715
+--- !u!114 &7532495982444714275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,20 +51,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814317424637236629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24681433279874e4bb18aa3c60e73e86, type: 3}
+  m_Script: {fileID: 11500000, guid: a2393033e76c0e64c90c7975fe3698f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creaturecard: 1
-  itemcard: 0
-  mutationcard: 0
-  insectSprite: {fileID: 8634092389232076295}
-  typeText: {fileID: 8634092388846713273}
-  nameText: {fileID: 8634092389317040403}
-  description: {fileID: 5492179657531287618}
-  tierText: {fileID: 8634092389787927399}
-  scienceText: {fileID: 8634092389057875669}
-  attackText: {fileID: 8634092388259128088}
-  healthText: {fileID: 8634092388279719316}
+  sprite: {fileID: 8634092389232076295}
+  tier: {fileID: 8634092389787927399}
+  science: {fileID: 8634092389787927399}
+  cardType: {fileID: 8634092388846713273}
+  cardName: {fileID: 8634092389317040403}
+  Description: {fileID: 5492179657531287618}
+  attack: {fileID: 8634092388259128088}
+  health: {fileID: 8634092388279719316}
+  cardStrings:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4813524647902121444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814317424637236629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c51ffc4082c5740ab4b03fcdf724cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFile: {fileID: 4900000, guid: 7208a298fae6f584ab70c1db116a2f06, type: 3}
+  names:
+  - name, id, description, affajfa
+  - bye
+  - hi
+  - bye
+  - 'hi '
+  - bye
+  information:
+  - name: john
+    cardId: 0
+    description: 
+    baseAttack: 0
+    baseHealth: 0
+    cardType: 0
+    tier: 0
+    cost: 0
+  - name: johnnn
+    cardId: 0
+    description: 
+    baseAttack: 0
+    baseHealth: 0
+    cardType: 0
+    tier: 0
+    cost: 0
+  - name: johnan
+    cardId: 0
+    description: 
+    baseAttack: 0
+    baseHealth: 0
+    cardType: 0
+    tier: 0
+    cost: 0
+  - name: nohan
+    cardId: 0
+    description: 
+    baseAttack: 0
+    baseHealth: 0
+    cardType: 0
+    tier: 0
+    cost: 0
+  - name: name
+    cardId: 0
+    description: 
+    baseAttack: 0
+    baseHealth: 0
+    cardType: 0
+    tier: 0
+    cost: 0
 --- !u!1 &2175665271334135920
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2175665271334135920}
   m_LocalRotation: {x: -0.70710707, y: -0, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 2.9159, y: -3.83, z: 1.5200069}
+  m_LocalPosition: {x: 2.82, y: -3.83, z: 1.5200069}
   m_LocalScale: {x: 0.23570892, y: 0.2969, z: 0.23826225}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -487,7 +554,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -856,7 +923,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8634092387974886960}
-  - component: {fileID: 8634092387974886961}
   - component: {fileID: 5697703317478335941}
   m_Layer: 0
   m_Name: BugCard
@@ -881,30 +947,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8634092387974886961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8634092387974886962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee47b954b55c8d14a8e2dbfd8bf9eb31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  cardID: 0
-  mutationID: 0
-  itemID: 0
-  cardType: 0
-  health: 0
-  attack: 0
-  tier: 0
-  science: 0
-  playerID: 0
-  currentOwner: {fileID: 0}
-  visuals: {fileID: 1814317424637236629}
 --- !u!65 &5697703317478335941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -949,7 +991,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1121,7 +1163,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1293,7 +1335,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1465,7 +1507,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1636,7 +1678,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8634092389232076295
 SpriteRenderer:
@@ -1893,7 +1935,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7713148559834193274}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2061,7 +2103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9199014334480398778}
   m_LocalRotation: {x: -0.70710707, y: -0, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -2.9159, y: -3.83, z: 1.5200069}
+  m_LocalPosition: {x: -2.82, y: -3.83, z: 1.5200069}
   m_LocalScale: {x: 0.23570892, y: 0.2969, z: 0.23826225}
   m_ConstrainProportionsScale: 0
   m_Children: []
