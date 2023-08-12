@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487259476}
-  - component: {fileID: 487259477}
   - component: {fileID: 487259478}
+  - component: {fileID: 487259479}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -156,46 +156,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &487259477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487259475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14c51ffc4082c5740ab4b03fcdf724cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatureCardList: {fileID: 4900000, guid: 7208a298fae6f584ab70c1db116a2f06, type: 3}
-  itemCardList: {fileID: 0}
-  mutationCardList: {fileID: 0}
-  names:
-  - name, the description unreal, 1, 2, 4, 5
-  - nameeada, the habibi enjoyer, 4, 7, 5, 8
-  - krifsoat, the masochism enjoyer, 64564, 25, 5, 45645
-  creatureCard:
-  - name: name
-    description: ' the description unreal'
-    baseAttack: 1
-    baseHealth: 2
-    tier: 4
-    cost: 5
-  - name: nameeada
-    description: ' the habibi enjoyer'
-    baseAttack: 4
-    baseHealth: 7
-    tier: 5
-    cost: 8
-  - name: krifsoat
-    description: ' the masochism enjoyer'
-    baseAttack: 64564
-    baseHealth: 25
-    tier: 5
-    cost: 45645
-  itemCard: []
-  mutationCard: []
 --- !u!114 &487259478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +172,71 @@ MonoBehaviour:
   spawnNew: 0
   removeOne: 0
   listIndexToRemove: 0
+--- !u!114 &487259479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487259475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c51ffc4082c5740ab4b03fcdf724cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - ignore, c = CreatureType, i = ItemType, m = MutationType
+  - ignore, any textline is ignored aslong as it doesnt have a c, i or m with ",
+    " infront of it but its also case sensitive, "ignore, " also just prevents a
+    console warning
+  - ignore, if you accidentily add for example an attack stat onto an item card then
+    the program will also ignore that
+  - ignore, (cardtype, name, description, tier, scienceCost, Attack, Health)
+  - c, mite, weakling, 1, 1, 1, 1
+  - i, food, yummy, 1, 1
+  - m, radiation, uhoh
+  - m, radiation, uhoh
+  - m, radiation, uhoh
+  - i, food, yummy, 1, 1
+  - i, food, yummy, 1, 1
+  - c, mite, weakling, 1, 1, 1, 1
+  - m, radiation, uhoh
+  cardList: {fileID: 4900000, guid: fc601413d8f948b41b95c926cb6f5403, type: 3}
+  creatureList:
+  - name: mite
+    description: weakling
+    tier: 1
+    cost: 1
+    baseAttack: 1
+    baseHealth: 1
+  - name: mite
+    description: weakling
+    tier: 1
+    cost: 1
+    baseAttack: 1
+    baseHealth: 1
+  itemList:
+  - name: food
+    description: yummy
+    tier: 1
+    cost: 1
+  - name: food
+    description: yummy
+    tier: 1
+    cost: 1
+  - name: food
+    description: yummy
+    tier: 1
+    cost: 1
+  mutationList:
+  - name: radiation
+    description: uhoh
+  - name: radiation
+    description: uhoh
+  - name: radiation
+    description: uhoh
+  - name: radiation
+    description: uhoh
 --- !u!1 &1135284718
 GameObject:
   m_ObjectHideFlags: 0

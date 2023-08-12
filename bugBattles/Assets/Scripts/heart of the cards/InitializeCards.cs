@@ -15,29 +15,37 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
     public class InitializeCards : MonoBehaviour
     {
 
-        [Serializable] class CreatureCard
+        [Serializable]
+        class CreatureCard
         {
             public string name;
             public string description;
-            public int baseAttack;
-            public int baseHealth;
             public int tier;
             public int cost;
+            public int baseAttack;
+            public int baseHealth;
+            public string family; //auduadhajdhajfhaiaif
+            public int weakness;
+            int shield;
 
             public CreatureCard Empty()
             {
-                return new CreatureCard() 
+                return new CreatureCard()
                 {
                     name = "",
                     description = "",
                     baseAttack = 0,
                     baseHealth = 0,
                     tier = 0,
-                    cost = 0
+                    cost = 0,
+                    weakness = 0, //0 = none, 1 = mint, 2 = sour, 3 = salt, 4 = spicy
+                    shield = 0,
                 };
             }
         }
-        [Serializable] class ItemCard
+
+        [Serializable]
+        class ItemCard
         {
             public string name;
             public string description;
@@ -55,11 +63,13 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
                 };
             }
         }
-        [Serializable] class MutationCard
+
+        [Serializable]
+        class MutationCard
         {
             public string name;
             public string description;
-            
+
             public MutationCard Empty()
             {
                 return new MutationCard()
@@ -71,52 +81,67 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
         }
 
 
-        [Header("creaturecards data")]
         [SerializeField] string[] lines;
+
         string cardType;
 
-        [SerializeField] TextAsset creatureCardList, itemCardList, mutationCardList;
+        [SerializeField] TextAsset cardList; /* itemCardList, mutationCardList;
         [SerializeField] CreatureCard[] creatureCard;
         [SerializeField] ItemCard[] itemCard;
         [SerializeField] MutationCard[] mutationCard;
-
-        [SerializeField] List<CreatureCard> creatureList; 
-        [SerializeField] List<ItemCard> itemList; 
-        [SerializeField] List<MutationCard> mutationList; 
+                                                     */
+        [SerializeField] List<CreatureCard> creatureList;
+        [SerializeField] List<ItemCard> itemList;
+        [SerializeField] List<MutationCard> mutationList;
 
 
         private void OnValidate() //this be stoled
         {
-            
+
             // the ? is a short way of asking if it does not equal null then continue, if it does equal null then return lines = nulll
-            lines = creatureCardList ? creatureCardList.text.Split(new[]
-            { 
-                Environment.NewLine 
+            lines = cardList ? cardList.text.Split(new[]
+            {
+                Environment.NewLine
             }, StringSplitOptions.RemoveEmptyEntries) : null; // if creaturecardlist equals true then it makes a new split every new line, also remove empty lines as an addon(?) and if it equals false return null
+
+            creatureList.Clear();
+            itemList.Clear();
+            mutationList.Clear();
 
             if (lines != null)
             {
-                cardType = lines[0]; //buh buh
-
-                switch(cardType)
+                for (int i = 0; i < lines.Length; i++)
                 {
-                    case "c": //creature card
+                    string[] parts = lines[i].Split(", ");
+                    cardType = parts[0].ToLower(); //buhbuh
+                    switch (cardType)
+                    {
+                        case "c": //creature card
+                            creatureList.Add(ConvertCreatureText(lines[i]));
+                            break;
 
-                        break;
+                        case "i": //item card
+                            itemList.Add(ConvertItemText(lines[i]));
+                            break;
 
-                    case "i":
+                        case "m": //mutation card
+                            mutationList.Add(ConvertMutationText(lines[i]));
+                            break;
 
-                        break;
+                        case "ignore":
+                            break;
 
-                    case "m":
+                        case "ign":
+                            break;
 
-                        break;
-
-                    default:
-
-                        break;
+                        default:
+                            Debug.LogWarning("invalid card type");
+                            break;
+                    }
                 }
 
+
+                /*
                 creatureCard = new CreatureCard[lines.Length];
                 for (int i = 0; i < creatureCard.Length; i++)
                 {
@@ -125,45 +150,84 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
                     Debug.Log(creatureCard.Length + "infolenght");
                     creatureCard[i] = ConvertCreatureText(lines[i]);
                 }
+                */
             }
 
         }
 
+        private string AddNewLines(string stringInput, string charToLine, bool replaceChar = false)
+        {
+            if (replaceChar)
+            {
+                stringInput = stringInput.Replace(charToLine, Environment.NewLine);
+            }
+            else
+            {
+                stringInput = stringInput.Replace(charToLine, Environment.NewLine + charToLine);
+            }
+
+            return stringInput;
+        }
+
         private CreatureCard ConvertCreatureText(string line)
         {
-            string[] parts = line.Split(","); // turns a string into array depending on the Split() parameters
-            Debug.Log(parts.Length + "parts");
+            string[] parts = line.Split(", "); // turns a string into array depending on the Split() parameters
+            int tempInt = 0;
+            switch (parts[8].ToLower())
+            {
+                case "mint":
+                    tempInt = 1;
+                    break;
+
+                case "sour":
+                    tempInt = 2;
+                    break;
+
+                case "salt":
+                    tempInt = 3;
+                    break;
+
+                case "spic":
+                    tempInt = 4;
+                    break;
+
+                default:
+                    tempInt = 0;
+                    break;
+            }
+
             return new CreatureCard
             {
-                name = parts[0],
-                 //uuuuhhhh, i think so int.tryparse(string, output int) ?(if)  truevalue : falsevalue     so if tryparse returns true, the line will give whats left of the :, but if false then it returns what is to the right.
-                description = parts[1],
-                baseAttack = int.TryParse(parts[2], out int output) ? output : 0, //baseattack = AttemptConvertToInt, if true, return output, if false return 0;     ? output = if true return output,   : 0 = if false return 0
-                baseHealth = int.TryParse(parts[3], out output) ? output : 0, // int.TryParse(parts[4]) returns a true/false if it can convert it or not, you can give it an out variable to put the result into
-                tier = int.TryParse(parts[4], out output) ? output : 0, //buh buh
-                cost = int.TryParse(parts[5], out output) ? output : 0
+
+                name = parts[1], //uuuuhhhh, i think so int.tryparse(string, output int) ?(if)  truevalue : falsevalue     so if tryparse returns true, the line will give whats left of the :, but if false then it returns what is to the right.
+                description = AddNewLines(parts[2], "¤"),
+                tier = int.TryParse(parts[3], out int output) ? output : 0, //buh buh
+                cost = int.TryParse(parts[4], out output) ? output : 0,
+                baseAttack = int.TryParse(parts[5], out output) ? output : 0, //baseattack = AttemptConvertToInt, if true, return output, if false return 0;     ? output = if true return output,   : 0 = if false return 0
+                baseHealth = int.TryParse(parts[6], out output) ? output : 0, // int.TryParse(parts[4]) returns a true/false if it can convert it or not, you can give it an out variable to put the result into
+                family = parts[7].ToLower(),
+                weakness = tempInt,
+
             };
         }
         private ItemCard ConvertItemText(string line)
         {
-            string[] parts = line.Split(","); // turns a string into array depending on the Split() parameters
-            Debug.Log(parts.Length + "parts");
+            string[] parts = line.Split(", "); // turns a string into array depending on the Split() parameters
             return new ItemCard
             {
-                name = parts[0],
-                description = parts[1],
-                tier = int.TryParse(parts[4], out int output) ? output : 0, //buh buh
-                cost = int.TryParse(parts[5], out output) ? output : 0
+                name = parts[1],
+                description = AddNewLines(parts[2], "¤"),
+                tier = int.TryParse(parts[3], out int output) ? output : 0, //buh buh buh buh
+                cost = int.TryParse(parts[4], out output) ? output : 0
             };
         }
         private MutationCard ConvertMutationText(string line)
         {
-            string[] parts = line.Split(","); // turns a string into array depending on the Split() parameters
-            Debug.Log(parts.Length + "parts");
+            string[] parts = line.Split(", "); // turns a string into array depending on the Split() parameters
             return new MutationCard
             {
-                name = parts[0],
-                description = parts[1],
+                name = parts[1],
+                description = AddNewLines(parts[2], "¤"),
             };
         }
     }

@@ -1,3 +1,10 @@
-name, the description unreal, 1, 2, 4, 5
-nameeada, the habibi enjoyer, 4, 7, 5, 8
-krifsoat, the masochism enjoyer, 64564, 25, 5, 45645
+ignore, c = CreatureType, i = ItemType, m = MutationType
+
+ignore, any textline is ignored aslong as it doesnt have a c, i or m with ", " infront of it but its also case sensitive, "ignore, " also just prevents a console warning
+ignore, if you accidentily add for example an attack stat onto an item card then the program will also ignore that
+
+
+ignore, (cardtype, name, description, tier, scienceCost, Attack, Health)
+c, mite, weakling, 1, 1, 1, 1
+i, food, yummy, 1, 1
+m, radiation, uhoh
