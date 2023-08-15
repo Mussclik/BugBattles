@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 487259479}
   m_Layer: 0
   m_Name: Manager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,58 +185,278 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - ignore, c = CreatureType, i = ItemType, m = MutationType
-  - ignore, any textline is ignored aslong as it doesnt have a c, i or m with ",
-    " infront of it but its also case sensitive, "ignore, " also just prevents a
-    console warning
-  - ignore, if you accidentily add for example an attack stat onto an item card then
+  - ign, c = CreatureType, i = ItemType, m = MutationType
+  - ign, any textline is ignored aslong as it doesnt have a c, i or m with ", " infront
+    of it, "ign, " also just prevents a console warning
+  - ign, if you accidentily add for example an attack stat onto an item card then
     the program will also ignore that
-  - ignore, (cardtype, name, description, tier, scienceCost, Attack, Health)
-  - c, mite, weakling, 1, 1, 1, 1
-  - i, food, yummy, 1, 1
-  - m, radiation, uhoh
-  - m, radiation, uhoh
-  - m, radiation, uhoh
-  - i, food, yummy, 1, 1
-  - i, food, yummy, 1, 1
-  - c, mite, weakling, 1, 1, 1, 1
-  - m, radiation, uhoh
+  - ign, (cardtype, name, description, tier, scienceCost, Attack, Health, family,
+    affinity)
+  - ign,     c,     mite,   weakling,   1,       1,         1,      1,    mites, 
+    salt
+  - c, ERROR CREATURE, AN ERROR HAS OCCURRED, 1, 1, 1, 1, ERROR, ERROR
+  - i, ERROR ITEM, AN ERROR HAS OCCURRED, 1, 1
+  - m, ERROR MUTATION, AN ERROR HAS OCCURRED
+  - 'ign, famalies: Brownant, '
+  - 'ign, weaknesses: mint, salt, sour, spic(y)'
+  - ign, CREATURES
+  - "c, Aphid, \"Has anxiety\" \xA4 When played first; attacks twice., 1, 1, 1, 1,
+    null, mint"
+  - c, Weevil, "The nose knows.", 3, 0, 1, 1, null, salt
+  - c, Brown Worker Ant, "A common Brown Worker Ant", 2, 1, 1, 1, BrownAnt, sour
+  - "c, stinkling, \"Small and smelly\" \xA4 Gas guts: After death deals 1 damage
+    to 2 random back slots., 1, 1, 1, 2, null, mint"
+  - "c, Grasshopper, \"Is it a bird? Is it a plane? No. it\xB4s a grasshopper!\"
+    \xA4 When played in back: Swap place with the front card., 3, 1, 2, 2, null,
+    salt"
+  - "c, Mosquito, \"The jester of the pond kingdom\" \xA4 When attacking: There is
+    a 50% chance of healing this card for 1 health, 3, 1, 2, 2, null, salt"
+  - "c, Ladybug, \"The lady of the clover forest\" \xA4 When healed: Gain 1 shield,
+    4, 1, 3, 2, null, sour"
+  - c, Brown Soldier Ant, "A brave knight of a Brown ant nest", 3, 2, 2, 2, BrownAnt,
+    sour
+  - "c, Cockroach, \"The quirky. the hated and the nifty\" \xA4 Immune: Immune to
+    all enemy effects., 3, 2, 2, 2, null, mint"
+  - "c, Bombardier Beetle, \"The combatant of the clover forest\" \xA4 When attacking:
+    There is a 50% chance of attacking a random back card instead., 4, 3, 3, 3, null,
+    mint"
+  - "c, Earwig, \"The samurai of the rotting forest\" \xA4 Trap: When in front. the
+    enemy front card is unable to switch., 3, 5, 4, 3, null, sour"
+  - "c, Stinkbug, \"A regularly spotted inhabitant of the drylands\" \xA4 Gas guts:
+    After death. deal 2 damage to all back slots., 5, 2, 4, 3, null, mint"
+  - "c, Silverfish, \"Quicker than Quick\" \xA4 When played: Gain 3 shield., 1, 3,
+    3, 3, null, salt"
+  - "c, Millipede, \"The sohei of the rotting forest\" \xA4 When played in back:
+    Give the front card 2 shield., 6, 2, 4, 3, null, salt"
+  - "c, Brown Queen Ant, \"The royal majestic queen of a brown ant nest\" \xA4 When
+    played first: Make a 1/1 Nanitick in this cards place. Then move this card to
+    the back. \xA4 Boost family: Brown ant +1/+1, 4, 2, 3, 3, BrownAnt, sour"
+  - ign, ITEMS
+  - i, Human Food, Heal a card for 3 health, 2, 2
+  - i, Shinobi Sneeze, Switch places with your front card and a selected back card,
+    1, 2
+  - i, Shield solidifier, Heal a card for 1 health and add +1 shield to it, 1, 2
+  - i, Minty shard, Applies minty damage to a card, 1, 1
+  - i, Sour shard, Applies sour damage to a card, 1, 1
+  - i, Salty shard, Applies salty damage to a card, 1, 1
+  - i, Spicy shard, Applies spicy damage to a card, 1, 1
+  - i, Super Chip, Increases the amount of fried science gained every round that
+    this card is active, 4, 3
+  - i, Sticky Fingers, When attacking. the creature card with this item has a 20%
+    chance to steal the opposing cards item and destroy this item., 2, 2
+  - ign, MUTATIONS
+  - m, Antnihilator, Adds +3 ant damage to the mutated card
+  - m, Gas Guard, Adds gas immunity to the Mutated card
+  - m, Unbeetleable, Adds +4 shield to the mutated card
+  - m, Mithridatism, Adds poison immunity to the Mutated card
+  - m, Graceful Comeback, Refunds the fried science amount of the cost of the Mutated
+    card (And item if there is an item attached)
+  - m, Polymorphism, Gives a random mutation card to your hand
+  - m, Mutation Mutilation, Has a 50% chance to boost attack or health by 50% OR
+    a 50% chance to lower attack or health by 50% of the Mutated card
   cardList: {fileID: 4900000, guid: fc601413d8f948b41b95c926cb6f5403, type: 3}
   creatureList:
-  - name: mite
-    description: weakling
+  - name: ERROR CREATURE
+    description: AN ERROR HAS OCCURRED
     tier: 1
     cost: 1
     baseAttack: 1
     baseHealth: 1
-  - name: mite
-    description: weakling
+    family: error
+    weakness: 0
+  - name: Aphid
+    description: "\"Has anxiety\" \r\n\xA4 When played first; attacks twice."
     tier: 1
     cost: 1
     baseAttack: 1
     baseHealth: 1
+    family: null
+    weakness: 1
+  - name: Weevil
+    description: '"The nose knows."'
+    tier: 1
+    cost: 1
+    baseAttack: 0
+    baseHealth: 3
+    family: null
+    weakness: 3
+  - name: Brown Worker Ant
+    description: '"A common Brown Worker Ant"'
+    tier: 1
+    cost: 1
+    baseAttack: 1
+    baseHealth: 2
+    family: brownant
+    weakness: 2
+  - name: stinkling
+    description: "\"Small and smelly\" \r\n\xA4 Gas guts: After death deals 1 damage
+      to 2 random back slots."
+    tier: 2
+    cost: 1
+    baseAttack: 1
+    baseHealth: 1
+    family: null
+    weakness: 1
+  - name: Grasshopper
+    description: "\"Is it a bird? Is it a plane? No. it\xB4s a grasshopper!\" \r\n\xA4
+      When played in back: Swap place with the front card."
+    tier: 2
+    cost: 2
+    baseAttack: 1
+    baseHealth: 3
+    family: null
+    weakness: 3
+  - name: Mosquito
+    description: "\"The jester of the pond kingdom\" \r\n\xA4 When attacking: There
+      is a 50% chance of healing this card for 1 health"
+    tier: 2
+    cost: 2
+    baseAttack: 1
+    baseHealth: 3
+    family: null
+    weakness: 3
+  - name: Ladybug
+    description: "\"The lady of the clover forest\" \r\n\xA4 When healed: Gain 1
+      shield"
+    tier: 2
+    cost: 3
+    baseAttack: 1
+    baseHealth: 4
+    family: null
+    weakness: 2
+  - name: Brown Soldier Ant
+    description: '"A brave knight of a Brown ant nest"'
+    tier: 2
+    cost: 2
+    baseAttack: 2
+    baseHealth: 3
+    family: brownant
+    weakness: 2
+  - name: Cockroach
+    description: "\"The quirky. the hated and the nifty\" \r\n\xA4 Immune: Immune
+      to all enemy effects."
+    tier: 2
+    cost: 2
+    baseAttack: 2
+    baseHealth: 3
+    family: null
+    weakness: 1
+  - name: Bombardier Beetle
+    description: "\"The combatant of the clover forest\" \r\n\xA4 When attacking:
+      There is a 50% chance of attacking a random back card instead."
+    tier: 3
+    cost: 3
+    baseAttack: 3
+    baseHealth: 4
+    family: null
+    weakness: 1
+  - name: Earwig
+    description: "\"The samurai of the rotting forest\" \r\n\xA4 Trap: When in front.
+      the enemy front card is unable to switch."
+    tier: 3
+    cost: 4
+    baseAttack: 5
+    baseHealth: 3
+    family: null
+    weakness: 2
+  - name: Stinkbug
+    description: "\"A regularly spotted inhabitant of the drylands\" \r\n\xA4 Gas
+      guts: After death. deal 2 damage to all back slots."
+    tier: 3
+    cost: 4
+    baseAttack: 2
+    baseHealth: 5
+    family: null
+    weakness: 1
+  - name: Silverfish
+    description: "\"Quicker than Quick\" \r\n\xA4 When played: Gain 3 shield."
+    tier: 3
+    cost: 3
+    baseAttack: 3
+    baseHealth: 1
+    family: null
+    weakness: 3
+  - name: Millipede
+    description: "\"The sohei of the rotting forest\" \r\n\xA4 When played in back:
+      Give the front card 2 shield."
+    tier: 3
+    cost: 4
+    baseAttack: 2
+    baseHealth: 6
+    family: null
+    weakness: 3
+  - name: Brown Queen Ant
+    description: "\"The royal majestic queen of a brown ant nest\" \r\n\xA4 When
+      played first: Make a 1/1 Nanitick in this cards place. Then move this card
+      to the back. \r\n\xA4 Boost family: Brown ant +1/+1"
+    tier: 3
+    cost: 3
+    baseAttack: 2
+    baseHealth: 4
+    family: brownant
+    weakness: 2
   itemList:
-  - name: food
-    description: yummy
+  - name: ERROR ITEM
+    description: AN ERROR HAS OCCURRED
     tier: 1
     cost: 1
-  - name: food
-    description: yummy
+  - name: Human Food
+    description: Heal a card for 3 health
+    tier: 2
+    cost: 2
+  - name: Shinobi Sneeze
+    description: Switch places with your front card and a selected back card
+    tier: 1
+    cost: 2
+  - name: Shield solidifier
+    description: Heal a card for 1 health and add +1 shield to it
+    tier: 1
+    cost: 2
+  - name: Minty shard
+    description: Applies minty damage to a card
     tier: 1
     cost: 1
-  - name: food
-    description: yummy
+  - name: Sour shard
+    description: Applies sour damage to a card
     tier: 1
     cost: 1
+  - name: Salty shard
+    description: Applies salty damage to a card
+    tier: 1
+    cost: 1
+  - name: Spicy shard
+    description: Applies spicy damage to a card
+    tier: 1
+    cost: 1
+  - name: Super Chip
+    description: Increases the amount of fried science gained every round that this
+      card is active
+    tier: 4
+    cost: 3
+  - name: Sticky Fingers
+    description: When attacking. the creature card with this item has a 20% chance
+      to steal the opposing cards item and destroy this item.
+    tier: 2
+    cost: 2
   mutationList:
-  - name: radiation
-    description: uhoh
-  - name: radiation
-    description: uhoh
-  - name: radiation
-    description: uhoh
-  - name: radiation
-    description: uhoh
+  - name: ERROR MUTATION
+    description: AN ERROR HAS OCCURRED
+  - name: Antnihilator
+    description: Adds +3 ant damage to the mutated card
+  - name: Gas Guard
+    description: Adds gas immunity to the Mutated card
+  - name: Unbeetleable
+    description: Adds +4 shield to the mutated card
+  - name: Mithridatism
+    description: Adds poison immunity to the Mutated card
+  - name: Graceful Comeback
+    description: Refunds the fried science amount of the cost of the Mutated card
+      (And item if there is an item attached)
+  - name: Polymorphism
+    description: Gives a random mutation card to your hand
+  - name: Mutation Mutilation
+    description: Has a 50% chance to boost attack or health by 50% OR a 50% chance
+      to lower attack or health by 50% of the Mutated card
 --- !u!1 &1135284718
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +584,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1468939061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4933639303300795121, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: debugID
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933639303300795121, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: debugtest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273975052899865496, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092387974886962, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_Name
+      value: BugCard 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092389057875671, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_Name
+      value: Cost
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092389317040403, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_fontSize
+      value: 31.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092389317040403, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_margin.x
+      value: 1.6171589
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092389317040403, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_margin.z
+      value: 2.3339171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634092389317040403, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
 --- !u!1 &1526136027
 GameObject:
   m_ObjectHideFlags: 0

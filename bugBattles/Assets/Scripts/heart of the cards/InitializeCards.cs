@@ -16,7 +16,7 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
     {
 
         [Serializable]
-        class CreatureCard
+        public class CreatureCard
         {
             public string name;
             public string description;
@@ -45,7 +45,7 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
         }
 
         [Serializable]
-        class ItemCard
+        public class ItemCard
         {
             public string name;
             public string description;
@@ -65,7 +65,7 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
         }
 
         [Serializable]
-        class MutationCard
+        public class MutationCard
         {
             public string name;
             public string description;
@@ -90,9 +90,12 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
         [SerializeField] ItemCard[] itemCard;
         [SerializeField] MutationCard[] mutationCard;
                                                      */
-        [SerializeField] List<CreatureCard> creatureList;
-        [SerializeField] List<ItemCard> itemList;
-        [SerializeField] List<MutationCard> mutationList;
+        [SerializeField]
+        public List<CreatureCard> creatureList;
+        [SerializeField] 
+        List<ItemCard> itemList;
+        [SerializeField] 
+        List<MutationCard> mutationList;
 
 
         private void OnValidate() //this be stoled
@@ -201,10 +204,14 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
 
                 name = parts[1], //uuuuhhhh, i think so int.tryparse(string, output int) ?(if)  truevalue : falsevalue     so if tryparse returns true, the line will give whats left of the :, but if false then it returns what is to the right.
                 description = AddNewLines(parts[2], "¤"),
-                tier = int.TryParse(parts[3], out int output) ? output : 0, //buh buh
-                cost = int.TryParse(parts[4], out output) ? output : 0,
-                baseAttack = int.TryParse(parts[5], out output) ? output : 0, //baseattack = AttemptConvertToInt, if true, return output, if false return 0;     ? output = if true return output,   : 0 = if false return 0
-                baseHealth = int.TryParse(parts[6], out output) ? output : 0, // int.TryParse(parts[4]) returns a true/false if it can convert it or not, you can give it an out variable to put the result into
+                //because of some fucky wuckys, the notes are out of order
+                baseHealth = int.TryParse(parts[3], out int output) ? output : 0, // int.TryParse(parts[4]) returns a true/false if it can convert it or not, you can give it an out variable to put the result into
+                baseAttack = int.TryParse(parts[4], out output) ? output : 0, //baseattack = AttemptConvertToInt, if true, return output, if false return 0;     ? output = if true return output,   : 0 = if false return 0
+                cost = int.TryParse(parts[5], out output) ? output : 0,
+                tier = int.TryParse(parts[6], out output) ? output : 0, //buh buh
+
+
+               
                 family = parts[7].ToLower(),
                 weakness = tempInt,
 
