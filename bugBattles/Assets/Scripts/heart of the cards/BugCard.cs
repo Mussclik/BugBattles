@@ -4,6 +4,8 @@ using testinging;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using CardParts;
+using Unity.VisualScripting;
 
 public class BugCard : MonoBehaviour
 {
@@ -11,13 +13,15 @@ public class BugCard : MonoBehaviour
     int iD;
     int tier;
     int cost;
-    int attack;
+    Attack attack = new Attack();
+    //int attack; redundent
     int health;
     string family;
     int weakness;
     int shield;
     int maxHealth; //for healthbar
     int maxShield; //for healthbar
+    public int status;
 
     [SerializeField]
     bool debugtest = false;
@@ -29,11 +33,15 @@ public class BugCard : MonoBehaviour
     public Vector3 desiredRotation;
 
     GameObject manager;
-
-    //not so basic vars for future
-    public delegate void CardTurn();
-    public event CardTurn cardTurn;
     public VisualCard visuals;
+
+    //turn phases deligates
+    public delegate void TurnPhasess(BugCard thisCard);
+    public event TurnPhasess preAttack;
+    public event TurnPhasess postAttack;
+
+
+    Attack test = new Attack(1, 2, 3); // creates an attack class with damage = 1, penetration = 2, type = 3, if nothing is entered then default to 0
 
     public void UpdateID(int newID)
     {
@@ -65,7 +73,7 @@ public class BugCard : MonoBehaviour
     {
         tier = newInfo.tier;
         cost = newInfo.cost;
-        attack = newInfo.baseAttack;
+        attack.SetDamage(newInfo.baseAttack);
         health = newInfo.baseHealth;
         family = newInfo.family;
         weakness = newInfo.weakness;
@@ -76,13 +84,7 @@ public class BugCard : MonoBehaviour
         UpdateVisuals();
     }
 
-    public void CardTurnAdvance()
-    {
-        if (cardTurn != null)
-        {
-            cardTurn();
-        }
-    }
+    
 
     public void TakeDamage(int amount, int damagetype = 0)
     {
