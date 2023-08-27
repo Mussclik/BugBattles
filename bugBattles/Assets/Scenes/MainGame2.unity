@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4933639303300795121, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
       propertyPath: debugtest
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5273975052899865496, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
       propertyPath: m_DynamicOccludee
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 8634092387974886960, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
       propertyPath: m_LocalPosition.z
@@ -671,6 +671,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8934895377793725386, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c809331bbf557aa40a577d8d7681303d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 855efbea1c5837248a58278dec8bc257, type: 3}
 --- !u!1 &1526136027

@@ -57,15 +57,16 @@ public class BugCard : MonoBehaviour
         visuals.tier.text = tier.ToString();
         visuals.cost.text = cost.ToString();
         visuals.cardType.text = "creature";
-        visuals.attack.text = attack.ToString();
+        visuals.attack.text = attack.GetDamage().ToString();
         visuals.health.text = health.ToString();
-        if (family != "null" || family != "error")
+        Debug.Log(family);
+        if (family.ToLower() == "null")
         {
-            visuals.family.text = family;
+            visuals.family.text = "";
         }
         else
         {
-            visuals.family.text = "";
+            visuals.family.text = family;
         }
     }
 
