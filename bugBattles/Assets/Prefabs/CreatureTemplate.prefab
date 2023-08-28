@@ -1338,7 +1338,7 @@ GameObject:
   - component: {fileID: 5697703317478335941}
   - component: {fileID: 4933639303300795121}
   m_Layer: 0
-  m_Name: BugCard 1
+  m_Name: CreatureTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

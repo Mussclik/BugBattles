@@ -56,20 +56,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 8634092389232076295}
   tier: {fileID: 8634092389787927399}
-  science: {fileID: 8634092389787927399}
+  cost: {fileID: 0}
   cardType: {fileID: 8634092388846713273}
   cardName: {fileID: 8634092389317040403}
   Description: {fileID: 5492179657531287618}
   attack: {fileID: 8634092388259128088}
   health: {fileID: 8634092388279719316}
-  cardStrings:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  family: {fileID: 0}
 --- !u!114 &4813524647902121444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,55 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c51ffc4082c5740ab4b03fcdf724cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFile: {fileID: 4900000, guid: 7208a298fae6f584ab70c1db116a2f06, type: 3}
-  names:
-  - name, id, description, affajfa
-  - bye
-  - hi
-  - bye
-  - 'hi '
-  - bye
-  information:
-  - name: john
-    cardId: 0
-    description: 
-    baseAttack: 0
-    baseHealth: 0
-    cardType: 0
-    tier: 0
-    cost: 0
-  - name: johnnn
-    cardId: 0
-    description: 
-    baseAttack: 0
-    baseHealth: 0
-    cardType: 0
-    tier: 0
-    cost: 0
-  - name: johnan
-    cardId: 0
-    description: 
-    baseAttack: 0
-    baseHealth: 0
-    cardType: 0
-    tier: 0
-    cost: 0
-  - name: nohan
-    cardId: 0
-    description: 
-    baseAttack: 0
-    baseHealth: 0
-    cardType: 0
-    tier: 0
-    cost: 0
-  - name: name
-    cardId: 0
-    description: 
-    baseAttack: 0
-    baseHealth: 0
-    cardType: 0
-    tier: 0
-    cost: 0
+  lines: []
+  cardList: {fileID: 0}
+  creatureList: []
+  itemList: []
+  mutationList: []
 --- !u!1 &2175665271334135920
 GameObject:
   m_ObjectHideFlags: 0
