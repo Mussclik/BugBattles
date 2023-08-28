@@ -51,15 +51,17 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
             public string description;
             public int tier;
             public int cost;
+            public int id;
 
-            public CreatureCard Empty()
+            public ItemCard Empty()
             {
-                return new CreatureCard()
+                return new ItemCard()
                 {
                     name = "",
                     description = "",
                     tier = 0,
-                    cost = 0
+                    cost = 0,
+                    id = 0
                 };
             }
         }
@@ -93,9 +95,9 @@ namespace testinging //collection of classes, like the class rigidbody in namesp
         [SerializeField]
         public List<CreatureCard> creatureList;
         [SerializeField] 
-        List<ItemCard> itemList;
+        public List<ItemCard> itemList;
         [SerializeField] 
-        List<MutationCard> mutationList;
+        public List<MutationCard> mutationList;
 
 
         private void OnValidate() //this be stoled

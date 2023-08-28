@@ -197,13 +197,13 @@ MonoBehaviour:
   - c, ERROR CREATURE, AN ERROR HAS OCCURRED, 1, 1, 1, 1, ERROR, ERROR
   - i, ERROR ITEM, AN ERROR HAS OCCURRED, 1, 1
   - m, ERROR MUTATION, AN ERROR HAS OCCURRED
-  - 'ign, famalies: Brownant, '
+  - 'ign, famalies: Brown Ant, '
   - 'ign, weaknesses: mint, salt, sour, spic(y)'
   - ign, CREATURES
   - "c, Aphid, \"Has anxiety\" \xA4 When played first; attacks twice., 1, 1, 1, 1,
     null, mint"
   - c, Weevil, "The nose knows.", 3, 0, 1, 1, null, salt
-  - c, Brown Worker Ant, "A common Brown Worker Ant", 2, 1, 1, 1, BrownAnt, sour
+  - c, Brown Worker Ant, "A common Brown Worker Ant", 2, 1, 1, 1, Brown Ant, sour
   - "c, stinkling, \"Small and smelly\" \xA4 Gas guts: After death deals 1 damage
     to 2 random back slots., 1, 1, 1, 2, null, mint"
   - "c, Grasshopper, \"Is it a bird? Is it a plane? No. it\xB4s a grasshopper!\"
@@ -213,8 +213,8 @@ MonoBehaviour:
     a 50% chance of healing this card for 1 health, 3, 1, 2, 2, null, salt"
   - "c, Ladybug, \"The lady of the clover forest\" \xA4 When healed: Gain 1 shield,
     4, 1, 3, 2, null, sour"
-  - c, Brown Soldier Ant, "A brave knight of a Brown ant nest", 3, 2, 2, 2, BrownAnt,
-    sour
+  - c, Brown Soldier Ant, "A brave knight of a Brown ant nest", 3, 2, 2, 2, Brown
+    Ant, sour
   - "c, Cockroach, \"The quirky. the hated and the nifty\" \xA4 Immune: Immune to
     all enemy effects., 3, 2, 2, 2, null, mint"
   - "c, Bombardier Beetle, \"The combatant of the clover forest\" \xA4 When attacking:
@@ -230,7 +230,7 @@ MonoBehaviour:
     Give the front card 2 shield., 6, 2, 4, 3, null, salt"
   - "c, Brown Queen Ant, \"The royal majestic queen of a brown ant nest\" \xA4 When
     played first: Make a 1/1 Nanitick in this cards place. Then move this card to
-    the back. \xA4 Boost family: Brown ant +1/+1, 4, 2, 3, 3, BrownAnt, sour"
+    the back. \xA4 Boost family: Brown ant +1/+1, 4, 2, 3, 3, Brown Ant, sour"
   - ign, ITEMS
   - i, Human Food, Heal a card for 3 health, 2, 2
   - i, Shinobi Sneeze, Switch places with your front card and a selected back card,
@@ -286,7 +286,7 @@ MonoBehaviour:
     cost: 1
     baseAttack: 1
     baseHealth: 2
-    family: brownant
+    family: brown ant
     weakness: 2
   - name: stinkling
     description: "\"Small and smelly\" \r\n\xA4 Gas guts: After death deals 1 damage
@@ -330,7 +330,7 @@ MonoBehaviour:
     cost: 2
     baseAttack: 2
     baseHealth: 3
-    family: brownant
+    family: brown ant
     weakness: 2
   - name: Cockroach
     description: "\"The quirky. the hated and the nifty\" \r\n\xA4 Immune: Immune
@@ -393,51 +393,61 @@ MonoBehaviour:
     cost: 3
     baseAttack: 2
     baseHealth: 4
-    family: brownant
+    family: brown ant
     weakness: 2
   itemList:
   - name: ERROR ITEM
     description: AN ERROR HAS OCCURRED
     tier: 1
     cost: 1
+    id: 0
   - name: Human Food
     description: Heal a card for 3 health
     tier: 2
     cost: 2
+    id: 0
   - name: Shinobi Sneeze
     description: Switch places with your front card and a selected back card
     tier: 1
     cost: 2
+    id: 0
   - name: Shield solidifier
     description: Heal a card for 1 health and add +1 shield to it
     tier: 1
     cost: 2
+    id: 0
   - name: Minty shard
     description: Applies minty damage to a card
     tier: 1
     cost: 1
+    id: 0
   - name: Sour shard
     description: Applies sour damage to a card
     tier: 1
     cost: 1
+    id: 0
   - name: Salty shard
     description: Applies salty damage to a card
     tier: 1
     cost: 1
+    id: 0
   - name: Spicy shard
     description: Applies spicy damage to a card
     tier: 1
     cost: 1
+    id: 0
   - name: Super Chip
     description: Increases the amount of fried science gained every round that this
       card is active
     tier: 4
     cost: 3
+    id: 0
   - name: Sticky Fingers
     description: When attacking. the creature card with this item has a 20% chance
       to steal the opposing cards item and destroy this item.
     tier: 2
     cost: 2
+    id: 0
   mutationList:
   - name: ERROR MUTATION
     description: AN ERROR HAS OCCURRED
@@ -582,7 +592,7 @@ Transform:
   - {fileID: 1526136030}
   - {fileID: 1135284720}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1468939061
 PrefabInstance:
@@ -761,3 +771,60 @@ Transform:
   m_Father: {fileID: 1143878253}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2065304853
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3587946625405112789, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_Name
+      value: Item template
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.223248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4610564
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894755116233726266, guid: 5f702836d07d07842a4f787542140eaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f702836d07d07842a4f787542140eaa, type: 3}

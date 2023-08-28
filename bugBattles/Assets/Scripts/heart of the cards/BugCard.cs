@@ -59,7 +59,6 @@ public class BugCard : MonoBehaviour
         visuals.cardType.text = "creature";
         visuals.attack.text = attack.GetDamage().ToString();
         visuals.health.text = health.ToString();
-        Debug.Log(family);
         if (family.ToLower() == "null")
         {
             visuals.family.text = "";
