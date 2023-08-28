@@ -24,6 +24,11 @@ public class ItemCard : MonoBehaviour
 
     void Update()
     {
+        Debugtest();
+    }
+
+    void Debugtest()
+    {
         if (debugtest)
         {
             try

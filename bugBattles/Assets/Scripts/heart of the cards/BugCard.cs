@@ -103,6 +103,10 @@ public class BugCard : MonoBehaviour
 
     private void Update()
     {
+        Debugtest();
+    }
+    void Debugtest()
+    {
         if (debugtest)
         {
             try
@@ -113,7 +117,7 @@ public class BugCard : MonoBehaviour
             {
                 debugtest = false;
                 UpdateID(0);
-                Debug.LogWarning("an error has occurred on " + this.gameObject.name);
+                UnityEngine.Debug.LogWarning("an error has occurred on " + this.gameObject.name);
             }
         }
     }
