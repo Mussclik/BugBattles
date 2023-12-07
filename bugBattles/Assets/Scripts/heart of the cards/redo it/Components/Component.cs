@@ -15,7 +15,7 @@ public class Component : MonoBehaviour
     void Start()
     {
         buh = null;
-        buh += Method();
+        buh += Method;
     }
 
     void Method()
